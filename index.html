@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Secret Page</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: #111;
+}
+
+/* LOGIN SCREEN */
+#loginBox {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+}
+
+input {
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 25px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    background: hotpink;
+    color: white;
+    cursor: pointer;
+}
+
+/* MESSAGE SCREEN */
+#messageScreen {
+    display: none;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* BACKGROUND IMAGE (FULL SCREEN FIXED) */
+#messageScreen::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: url("mikasa.jpg.jfif") center center no-repeat;
+    background-size: cover;   /* ✅ FIXED */
+    
+    z-index: -1;
+}
+
+/* TEXT */
+#messageText {
+    font-size: 70px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px 10px black;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="loginBox">
+    <h1>Enter Your Name</h1>
+    <input type="text" id="nameInput" placeholder="Type name">
+    <button onclick="checkName()">Open</button>
+</div>
+
+<!-- SECRET SCREEN -->
+<div id="messageScreen">
+    <div id="messageText">bishhh, i love u</div>
+</div>
+
+<script>
+function checkName() {
+    let name = document.getElementById("nameInput").value.trim().toLowerCase();
+
+    // ONLY ALLOWED NAME
+    if (name === "ayesha") {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("messageScreen").style.display = "flex";
+    }
+
+    // WRONG NAME → DO NOTHING
+}
+</script>
+
+</body>
+</html>
